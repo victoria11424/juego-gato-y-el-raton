@@ -5,6 +5,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
     info.changeScoreBy(10)
     queso.setPosition(randint(0, 160), randint(0, 160))
 })
+let raton: Sprite = null
 let queso: Sprite = null
 scene.setBackgroundImage(img`
     8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888b888886888888588888888888888b8888888888888
@@ -129,22 +130,7 @@ scene.setBackgroundImage(img`
     8888888888885555588888888888885888888888888888858885888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888588888588855588888
     `)
 info.setScore(0)
-let raton = sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . 4 4 4 . . . . 4 4 4 . . . . 
-    . 4 5 5 5 e . . e 5 5 5 4 . . . 
-    4 5 5 5 5 5 e e 5 5 5 5 5 4 . . 
-    4 5 5 4 4 5 5 5 5 4 4 5 5 4 . . 
-    e 5 4 4 5 5 5 5 5 5 4 4 5 e . . 
-    . e e 5 5 5 5 5 5 5 5 e e . . . 
-    . . e 5 f 5 5 5 5 f 5 e . . . . 
-    . . f 5 5 5 4 4 5 5 5 f . f f . 
-    . . . 4 5 5 f f 5 5 6 f f 5 f . 
-    . . . f 6 6 6 6 6 6 4 4 4 5 f . 
-    . . . f 5 5 5 5 5 5 5 f f f . . 
-    . . . f 5 4 5 f f f 5 f . . . . 
-    . . . f f f f f . . f f . . . . 
-    `, SpriteKind.Player)
+queso = 0
 controller.moveSprite(raton, 100, 100)
 let gato = sprites.create(img`
     e e e . . . . e e e . . . . 
@@ -162,7 +148,22 @@ let gato = sprites.create(img`
     . f d f f f d f f d f . . . 
     . f f . . f f . . f f . . . 
     `, SpriteKind.Enemy)
-raton.setPosition(10, 11)
+sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . 4 4 4 . . . . 4 4 4 . . . . 
+    . 4 5 5 5 e . . e 5 5 5 4 . . . 
+    4 5 5 5 5 5 e e 5 5 5 5 5 4 . . 
+    4 5 5 4 4 5 5 5 5 4 4 5 5 4 . . 
+    e 5 4 4 5 5 5 5 5 5 4 4 5 e . . 
+    . e e 5 5 5 5 5 5 5 5 e e . . . 
+    . . e 5 f 5 5 5 5 f 5 e . . . . 
+    . . f 5 5 5 4 4 5 5 5 f . f f . 
+    . . . 4 5 5 f f 5 5 6 f f 5 f . 
+    . . . f 6 6 6 6 6 6 4 4 4 5 f . 
+    . . . f 5 5 5 5 5 5 5 f f f . . 
+    . . . f 5 4 5 f f f 5 f . . . . 
+    . . . f f f f f . . f f . . . . 
+    `, SpriteKind.Player).setPosition(10, 11)
 gato.setPosition(146, 106)
 queso = 0
 game.onUpdateInterval(5000, function () {
